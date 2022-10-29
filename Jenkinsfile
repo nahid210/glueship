@@ -1,8 +1,5 @@
-pipeline{
-  agent {label "192.168.122.72"}
-  
-}
-    stages {
+
+   stage {
         stage ('Build') {
             steps {
                 sh 'docker build -t nginxtest:v1.0.0 .'

@@ -2,16 +2,17 @@ pipeline {
     agent {
         label 'glueship'
     }
-    stages{
-        stage('Docker image Build') {
+
+    stages {
+	
+		stage('Docker image Build') {
             steps {
             	sh """
-                    docker build -t nginxtest:v1.00 .
+                   git clone https://github.com/nahid210/glueship
             	"""
             }
         }
-
-	    stage('Docker image Build') {
+        stage('Docker image Build') {
             steps {
             	sh """
                     docker build -t nginxtest:v1.00 .
@@ -22,10 +23,12 @@ pipeline {
         stage('Docker container creation') {
             steps { 
                 sh """
-            	"""
+            	    echo "succeessfully install"
+                """
             }
         }
     }
+
     post {
         success {
             script {
@@ -41,5 +44,6 @@ pipeline {
 				"""
             }
         }
+
     }
 }

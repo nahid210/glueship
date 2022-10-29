@@ -1,12 +1,45 @@
-
-   stage {
-        stage ('Build') {
+pipeline {
+    agent {
+        label 'glueship'
+    }
+    stages{
+        stage('Docker image Build') {
             steps {
-                sh 'docker build -t nginxtest:v1.0.0 .'
+            	sh """
+                    docker build -t nginxtest:v1.00 .
+            	"""
             }
-	}
-	stage('deployment') {
-               sh ' docker run -d --name glue-frontend --restart always -p $port:8080 test_backend:$BUILD_NUMBER_ENV'
-              }
-         } 
+        }
 
+	    stage('Docker image Build') {
+            steps {
+            	sh """
+                    docker build -t nginxtest:v1.00 .
+            	"""
+            }
+        }
+
+        stage('Docker container creation') {
+            steps { 
+                sh """
+            	"""
+            }
+        }
+    }
+    post {
+        success {
+            script {
+				sh """
+					echo "This is success"
+				"""
+            }
+        }
+        failure {
+            script {
+				sh """
+					echo "This is failed"
+				"""
+            }
+        }
+    }
+}

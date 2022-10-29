@@ -3,8 +3,7 @@ pipeline{
   
   stages {
     agetnt { 
-   sh 
-    docker build -t nginxtest:v1.0.0 .
+      sh 'docker build -t nginxtest:v1.0.0 .'
      
     }
   }

@@ -12,5 +12,4 @@ pipeline{
                sh ' docker run -d --name glue-frontend --restart always -p $port:8080 test_backend:$BUILD_NUMBER_ENV'
               }
          } 
-   }
 }

@@ -3,14 +3,14 @@ pipeline{
   
   stages {
     agetnt { 
-   sh """"
+   sh 
     docker build -t nginxtest:v1.0.0 .
-     """"
+     
     }
   }
 
 	stage('deployment') {
-               sh """
+               sh 
             		if [ ! -z  "\$(docker ps -a -q -f name=glue-frontend)" ];then
             		  echo "Found running container"
             		  docker container stop glue-frontend
@@ -19,7 +19,7 @@ pipeline{
             		else
 		          docker run -d --name glue-frontend --restart always -p $port:8080 test_backend:$BUILD_NUMBER_ENV
             		fi
-            	"""
+            	
                          }
          } 
    }

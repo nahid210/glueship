@@ -8,7 +8,7 @@ pipeline {
 		stage('Git clone') {
             steps {
             	sh """
-                   rm -fr gluship
+                   rm -fr glueship
                    git clone https://github.com/nahid210/glueship
             	"""
 

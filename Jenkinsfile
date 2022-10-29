@@ -23,7 +23,7 @@ pipeline {
         stage('Docker container creation') {
             steps { 
                 sh """
-            	    echo "succeessfully install"
+            	   docker run -d --name glueshiptest --restart always -p 8088:80 nginxtest:v1.00 
                 """
             }
         }

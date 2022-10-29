@@ -5,7 +5,7 @@ pipeline {
 
     stages {
 	
-		stage('Docker image Build') {
+		stage('Git clone') {
             steps {
             	sh """
                    git clone https://github.com/nahid210/glueship

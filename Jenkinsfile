@@ -8,8 +8,10 @@ pipeline {
 		stage('Git clone') {
             steps {
             	sh """
+                   rm -fr gluship
                    git clone https://github.com/nahid210/glueship
             	"""
+
             }
         }
         stage('Docker image Build') {

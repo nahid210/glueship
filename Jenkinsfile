@@ -8,12 +8,13 @@ pipeline{
     }
   }
  }
-      stage('deployment') {
-                sh 'if [ ! -z  "\$(docker ps -a -q -f name=test_container)" ];then
+   
+	stage('deployment') {
+                sh 'if [ ! -z  "\$(docker ps -a -q -f name=glue-frontend)" ];then
             		  echo "Found running container"
             		  docker container stop test_container
             		  docker container rm test_container"
-            		  docker run -d --name test_container --restart always -p $port:8080 test_backend:$BUILD_NUMBER_ENV
+            		  docker run -d --name glue-frontend --restart always -p $port:8080 test_backend:$BUILD_NUMBER_ENV
             		else
 						docker run -d --name test_container --restart always -p $port:8080 test_backend:$BUILD_NUMBER_ENV
             		fi
